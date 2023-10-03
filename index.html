@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Custom Marker with Text</title>
+    <link rel="stylesheet" href="style.css" />
+    <script
+      async
+      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCiHJ0aa7VXYJ4oo8hN1fL1jsNwFG2w7oc&libraries=places"
+    ></script>
+    <!-- <script src="./script.js"></script> -->
+  </head>
+  <body>
+    <div id="map" style="width: 100%; height: 400px"></div>
+    <script>
+      // Initialize the map
+      async function initMap() {
+        const { Map } = await google.maps.importLibrary('maps');
+        const { AdvancedMarkerElement } = await google.maps.importLibrary(
+          'marker'
+        );
+        const map = new Map(document.getElementById('map'), {
+          center: { lat: 37.42, lng: -122.1 },
+          zoom: 14,
+          mapId: '4504f8b37365c3d0',
+        });
+        const priceTag = document.createElement('div');
+
+        priceTag.className = 'price-tag';
+        priceTag.textContent = '$2.5M';
+
+        const marker = new AdvancedMarkerElement({
+          map,
+          position: { lat: 37.42, lng: -122.1 },
+          content: priceTag,
+        });
+      }
+
+      initMap();
+    </script>
+  </body>
+</html>
